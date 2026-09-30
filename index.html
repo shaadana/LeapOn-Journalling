@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeapOn - Journal</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="journal.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-brand"><i class="fas fa-robot"></i> LeapOn</div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link active">
+            <i class="fas fa-book"></i> Journal
+          </a>
+          <a href="analytics.html" class="nav-link">
+            <i class="fas fa-chart-line"></i> Analytics
+          </a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="fas fa-comments"></i> Communication Tools
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="generator.html" class="dropdown-item">
+                <i class="fas fa-pen"></i> Generator
+              </a>
+              <a href="message.html" class="dropdown-item">
+                <i class="fas fa-search"></i> Message Analyzer
+              </a>
+            </div>
+          </div>
+          <a href="settings.html" class="nav-link">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="journal-container">
+      <!-- Sidebar -->
+      <aside class="journal-sidebar">
+        <div class="sidebar-header">
+          <h2><i class="fas fa-book-open"></i> My Journal</h2>
+          <button id="newEntryBtn" class="btn primary new-entry-btn">
+            <i class="fas fa-plus"></i> New Entry
+          </button>
+        </div>
+
+        <div class="entries-list" id="entriesList">
+          <!-- Entries will be dynamically added here -->
+        </div>
+      </aside>
+
+      <!-- Main Editor -->
+      <main class="journal-main">
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+          <i class="fas fa-book-open"></i>
+          <h2>Start Your Journal</h2>
+          <p>Click "New Entry" to create your first journal entry</p>
+        </div>
+
+        <!-- Editor -->
+        <div class="journal-editor" id="journalEditor" style="display: none">
+          <div class="editor-toolbar">
+            <div class="toolbar-group">
+              <label for="entryTitle" class="toolbar-label">Title:</label>
+              <input
+                type="text"
+                id="entryTitle"
+                class="entry-title-input"
+                placeholder="Entry Title..."
+              />
+            </div>
+
+            <div class="toolbar-group">
+              <label class="toolbar-label">Font:</label>
+              <select id="fontSelect" class="font-select">
+                <option value="Inter">Default</option>
+                <option value="Times New Roman">Fancy</option>
+                <option value="Papyrus">Bold</option>
+                <option value="Indie Flower">Handwritten</option>
+              </select>
+            </div>
+
+            <div class="toolbar-group">
+              <button class="toolbar-btn" id="highlightBtn" title="Highlight">
+                <i class="fas fa-highlighter"></i>
+              </button>
+              <select
+                id="highlightColor"
+                class="highlight-color-select"
+                title="Highlight Color"
+              >
+                <option value="#fef08a" style="background: #fef08a">
+                  Yellow
+                </option>
+                <option value="#fbcfe8" style="background: #fbcfe8">
+                  Pink
+                </option>
+                <option value="#bfdbfe" style="background: #bfdbfe">
+                  Blue
+                </option>
+                <option value="#bbf7d0" style="background: #bbf7d0">
+                  Green
+                </option>
+                <option value="#fed7aa" style="background: #fed7aa">
+                  Orange
+                </option>
+                <option value="#e9d5ff" style="background: #e9d5ff">
+                  Purple
+                </option>
+              </select>
+              <button
+                class="toolbar-btn"
+                id="stickyNoteBtn"
+                title="Add Sticky Note"
+              >
+                <i class="fas fa-sticky-note"></i>
+              </button>
+              <button class="toolbar-btn" id="stickerBtn" title="Add Sticker">
+                <i class="fas fa-smile"></i>
+              </button>
+            </div>
+
+            <div class="toolbar-group">
+              <button class="btn secondary" id="saveEntryBtn">
+                <i class="fas fa-save"></i> Save
+              </button>
+              <button class="btn secondary" id="deleteEntryBtn">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+              <button class="btn primary" id="analyzeEntryBtn">
+                <i class="fas fa-brain"></i> AI Analysis
+              </button>
+            </div>
+          </div>
+
+          <div class="scrapbook-page" id="scrapbookPage">
+            <div class="page-decorations">
+              <div class="tape tape-top-left"></div>
+              <div class="tape tape-top-right"></div>
+              <div class="tape tape-bottom-left"></div>
+              <div class="tape tape-bottom-right"></div>
+            </div>
+
+            <div
+              class="entry-content"
+              id="entryContent"
+              contenteditable="true"
+              data-placeholder="Start writing your thoughts..."
+            ></div>
+          </div>
+
+          <!-- AI Analysis Section -->
+          <div
+            class="ai-analysis-section"
+            id="aiAnalysisSection"
+            style="display: none"
+          >
+            <div class="analysis-loading" id="analysisLoading">
+              <div class="spinner"></div>
+              <p>Analyzing your entry...</p>
+            </div>
+
+            <div class="analysis-results" id="analysisResultsContainer">
+              <div class="analysis-card">
+                <h3><i class="fas fa-heart"></i> Emotional Analysis</h3>
+                <div id="emotionAnalysis" class="analysis-content"></div>
+              </div>
+
+              <div class="analysis-card">
+                <h3><i class="fas fa-lightbulb"></i> Insights & Advice</h3>
+                <div id="adviceContent" class="analysis-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Sticker Picker Modal -->
+    <div class="modal" id="stickerModal">
+      <div class="modal-content sticker-picker">
+        <div class="modal-header">
+          <h3>Choose a Sticker</h3>
+          <button class="close-modal" id="closeStickerModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="sticker-grid">
+          <div class="sticker-item" data-sticker="⭐">⭐</div>
+          <div class="sticker-item" data-sticker="❤️">❤️</div>
+          <div class="sticker-item" data-sticker="😊">😊</div>
+          <div class="sticker-item" data-sticker="🎉">🎉</div>
+          <div class="sticker-item" data-sticker="✨">✨</div>
+          <div class="sticker-item" data-sticker="🌟">🌟</div>
+          <div class="sticker-item" data-sticker="💡">💡</div>
+          <div class="sticker-item" data-sticker="🎯">🎯</div>
+          <div class="sticker-item" data-sticker="🌈">🌈</div>
+          <div class="sticker-item" data-sticker="🦋">🦋</div>
+          <div class="sticker-item" data-sticker="🌸">🌸</div>
+          <div class="sticker-item" data-sticker="☀️">☀️</div>
+          <div class="sticker-item" data-sticker="🌙">🌙</div>
+          <div class="sticker-item" data-sticker="💫">💫</div>
+          <div class="sticker-item" data-sticker="🎨">🎨</div>
+          <div class="sticker-item" data-sticker="📚">📚</div>
+          <div class="sticker-item" data-sticker="✏️">✏️</div>
+          <div class="sticker-item" data-sticker="📝">📝</div>
+          <div class="sticker-item" data-sticker="🎵">🎵</div>
+          <div class="sticker-item" data-sticker="🍀">🍀</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Note Modal -->
+    <div class="modal" id="stickyNoteModal">
+      <div class="modal-content sticky-note-creator">
+        <div class="modal-header">
+          <h3>Add Sticky Note</h3>
+          <button class="close-modal" id="closeStickyNoteModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="sticky-note-form">
+          <textarea
+            id="stickyNoteText"
+            placeholder="Write your note..."
+            rows="4"
+          ></textarea>
+          <div class="sticky-note-colors">
+            <div
+              class="color-option"
+              data-color="#fef08a"
+              style="background: #fef08a"
+            ></div>
+            <div
+              class="color-option"
+              data-color="#fbcfe8"
+              style="background: #fbcfe8"
+            ></div>
+            <div
+              class="color-option"
+              data-color="#bfdbfe"
+              style="background: #bfdbfe"
+            ></div>
+            <div
+              class="color-option"
+              data-color="#bbf7d0"
+              style="background: #bbf7d0"
+            ></div>
+            <div
+              class="color-option"
+              data-color="#fed7aa"
+              style="background: #fed7aa"
+            ></div>
+            <div
+              class="color-option"
+              data-color="#e9d5ff"
+              style="background: #e9d5ff"
+            ></div>
+          </div>
+          <button class="btn primary" id="addStickyNoteBtn">Add Note</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="settings.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
