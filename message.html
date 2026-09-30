@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Message Analyzer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="themes.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-brand"><i class="fas fa-robot"></i> LeapOn</div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-book"></i> Journal
+          </a>
+          <a href="analytics.html" class="nav-link">
+            <i class="fas fa-chart-line"></i> Analytics
+          </a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="fas fa-comments"></i> Communication Tools
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="generator.html" class="dropdown-item">
+                <i class="fas fa-pen"></i> Generator
+              </a>
+              <a href="message.html" class="dropdown-item">
+                <i class="fas fa-search"></i> Message Analyzer
+              </a>
+            </div>
+          </div>
+          <a href="settings.html" class="nav-link">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-robot"></i> AI Message Analyzer</h1>
+        <p class="subtitle">
+          Get instant analysis and response suggestions for any message
+        </p>
+      </header>
+
+      <main>
+        <div class="input-section">
+          <h2>Enter Your Message</h2>
+          <textarea
+            id="messageInput"
+            placeholder="Paste the message you received here..."
+          ></textarea>
+          <div class="button-group">
+            <button id="analyzeBtn" class="btn primary">
+              <i class="fas fa-search"></i> Analyze Message
+            </button>
+            <button id="clearBtn" class="btn secondary">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+
+        <div class="results-section" id="resultsSection" style="display: none">
+          <div class="loading" id="loadingIndicator">
+            <div class="spinner"></div>
+            <p>Analyzing your message...</p>
+          </div>
+
+          <div class="analysis-results" id="analysisResults">
+            <div class="result-card analysis-card">
+              <h3><i class="fas fa-brain"></i> Emotional Analysis</h3>
+              <div class="emotion-chart-container">
+                <canvas id="emotionChart"></canvas>
+              </div>
+              <div id="analysisContent" class="content"></div>
+            </div>
+
+            <div class="result-card suggestions-card">
+              <h3><i class="fas fa-lightbulb"></i> Response Recommendations</h3>
+              <div id="suggestionsContent" class="content"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>AI Message Analyzer &copy; 2025 | Powered by OpenAI</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="settings.js"></script>
+    <script src="message.js"></script>
+  </body>
+</html>
