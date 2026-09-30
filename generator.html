@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message Generator - Mentor Mindset AI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="themes.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-brand"><i class="fas fa-robot"></i> LeapOn</div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-book"></i> Journal
+          </a>
+          <a href="analytics.html" class="nav-link">
+            <i class="fas fa-chart-line"></i> Analytics
+          </a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="fas fa-comments"></i> Communication Tools
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="generator.html" class="dropdown-item">
+                <i class="fas fa-pen"></i> Generator
+              </a>
+              <a href="message.html" class="dropdown-item">
+                <i class="fas fa-search"></i> Message Analyzer
+              </a>
+            </div>
+          </div>
+          <a href="settings.html" class="nav-link">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-pen-fancy"></i> Message Generator</h1>
+        <p class="subtitle">Create messages using Mentor Mindset practices</p>
+      </header>
+
+      <main>
+        <div class="generator-form">
+          <div class="form-section">
+            <h2>
+              <i class="fas fa-comment-dots"></i> What do you want to say?
+            </h2>
+            <textarea
+              id="messageIntent"
+              placeholder="Describe what you want to communicate (e.g., 'I want to encourage my student who is struggling with math')"
+            ></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>
+              <i class="fas fa-tools"></i> Select Mentor Mindset Practices
+            </h2>
+            <div class="practices-grid">
+              <label class="practice-checkbox">
+                <input type="checkbox" value="sergio-trifecta" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Sergio Trifecta</strong>
+                  <small>Validate, Seek, Collaborate</small>
+                </div>
+              </label>
+
+              <label class="practice-checkbox">
+                <input type="checkbox" value="transparency" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Transparency Statements</strong>
+                  <small>Explain your intentions</small>
+                </div>
+              </label>
+
+              <label class="practice-checkbox">
+                <input type="checkbox" value="honor-agency" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Honor Agency</strong>
+                  <small>Respect autonomy</small>
+                </div>
+              </label>
+
+              <label class="practice-checkbox">
+                <input type="checkbox" value="stress-reframing" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Stress Reframing</strong>
+                  <small>Frame stress positively</small>
+                </div>
+              </label>
+
+              <label class="practice-checkbox">
+                <input type="checkbox" value="collaborative-troubleshooting" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Collaborative Troubleshooting</strong>
+                  <small>Surface, Validate, Bridge</small>
+                </div>
+              </label>
+
+              <label class="practice-checkbox">
+                <input type="checkbox" value="purpose-note" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Purpose Note</strong>
+                  <small>Skills, Benefit, Greater Good</small>
+                </div>
+              </label>
+
+              <label class="practice-checkbox">
+                <input type="checkbox" value="belonging-stories" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Belonging Stories</strong>
+                  <small>Struggle, Change, Action, Ripple</small>
+                </div>
+              </label>
+
+              <label class="practice-checkbox">
+                <input type="checkbox" value="growth-mindset" />
+                <span class="checkmark"></span>
+                <div class="practice-info">
+                  <strong>Growth Mindset</strong>
+                  <small>"Not yet" vs "can't do"</small>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2><i class="fas fa-sliders-h"></i> Additional Parameters</h2>
+            <div class="parameters-grid">
+              <div class="param-group">
+                <label for="senderRole">Your Role:</label>
+                <select id="senderRole">
+                  <option value="">Select role...</option>
+                  <option value="teacher">Teacher</option>
+                  <option value="mentor">Mentor</option>
+                  <option value="parent">Parent</option>
+                  <option value="coach">Coach</option>
+                  <option value="supervisor">Supervisor</option>
+                  <option value="peer">Peer</option>
+                  <option value="friend">Friend</option>
+                </select>
+              </div>
+
+              <div class="param-group">
+                <label for="recipientRole">Recipient's Role:</label>
+                <select id="recipientRole">
+                  <option value="">Select role...</option>
+                  <option value="student">Student</option>
+                  <option value="mentee">Mentee</option>
+                  <option value="child">Child</option>
+                  <option value="athlete">Athlete</option>
+                  <option value="employee">Employee</option>
+                  <option value="colleague">Colleague</option>
+                  <option value="friend">Friend</option>
+                </select>
+              </div>
+
+              <div class="param-group">
+                <label for="specialNeeds"> Special Needs: </label>
+                <select id="specialNeeds">
+                  <option value="">None</option>
+                  <option value="learningdisability">
+                    Learning Disability
+                  </option>
+                  <option value="emotionalbehavioraldisorder">
+                    Emotional/Behavorial Disorder
+                  </option>
+
+                  <option value="anxietydisorder">Anxiety Disorder</option>
+                </select>
+              </div>
+
+              <div class="param-group">
+                <label for="messageLength">Message Length:</label>
+                <select id="messageLength">
+                  <option value="brief">Brief (2-3 sentences)</option>
+                  <option value="moderate" selected>
+                    Moderate (1 paragraph)
+                  </option>
+                  <option value="detailed">Detailed (2-3 paragraphs)</option>
+                </select>
+              </div>
+
+              <div class="param-group">
+                <label for="formality">Formality Level:</label>
+                <select id="formality">
+                  <option value="casual">Casual</option>
+                  <option value="friendly" selected>Friendly</option>
+                  <option value="professional">Professional</option>
+                  <option value="formal">Formal</option>
+                </select>
+              </div>
+
+              <div class="param-group full-width">
+                <label for="additionalContext"
+                  >Additional Context (Optional):</label
+                >
+                <textarea
+                  id="additionalContext"
+                  rows="3"
+                  placeholder="Any other information that might help (e.g., 'This is a follow-up to a previous conversation')"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button id="generateBtn" class="btn primary">
+              <i class="fas fa-magic"></i> Generate Message
+            </button>
+            <button id="clearGenBtn" class="btn secondary">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="results-section"
+          id="generatorResults"
+          style="display: none"
+        >
+          <div class="loading" id="generatorLoading">
+            <div class="spinner"></div>
+            <p>Generating your message...</p>
+          </div>
+
+          <div class="generated-message" id="generatedContent">
+            <div class="result-card generator-card">
+              <h3><i class="fas fa-envelope"></i> Generated Message</h3>
+              <div id="generatedText" class="generated-text"></div>
+              <button id="copyBtn" class="btn secondary copy-btn">
+                <i class="fas fa-copy"></i> Copy to Clipboard
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>AI Message Analyzer &copy; 2025 | Powered by OpenAI</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="settings.js"></script>
+    <script src="generator.js"></script>
+  </body>
+</html>
