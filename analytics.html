@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics - Mentor Mindset AI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="analytics.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-brand"><i class="fas fa-robot"></i> LeapOn</div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-book"></i> Journal
+          </a>
+          <a href="analytics.html" class="nav-link">
+            <i class="fas fa-chart-line"></i> Analytics
+          </a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="fas fa-comments"></i> Communication Tools
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="generator.html" class="dropdown-item">
+                <i class="fas fa-pen"></i> Generator
+              </a>
+              <a href="message.html" class="dropdown-item">
+                <i class="fas fa-search"></i> Message Analyzer
+              </a>
+            </div>
+          </div>
+          <a href="settings.html" class="nav-link">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-chart-bar"></i> Journal Analytics</h1>
+        <p class="subtitle">Track your emotional journey over time</p>
+      </header>
+
+      <main>
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="card-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="card-content">
+              <h3 id="totalEntries">0</h3>
+              <p>Total Entries</p>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="card-content">
+              <h3 id="entriesThisMonth">0</h3>
+              <p>This Month</p>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="card-content">
+              <h3 id="currentStreak">0</h3>
+              <p>Day Streak</p>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="card-content">
+              <h3 id="topEmotion">-</h3>
+              <p>Top Emotion</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+          <!-- Emotions Over Time -->
+          <div class="chart-card">
+            <h3><i class="fas fa-chart-line"></i> Emotions Over Time</h3>
+            <canvas id="emotionsTimeChart"></canvas>
+          </div>
+
+          <!-- Emotion Distribution -->
+          <div class="chart-card">
+            <h3><i class="fas fa-chart-pie"></i> Emotion Distribution</h3>
+            <canvas id="emotionPieChart"></canvas>
+          </div>
+
+          <!-- Entry Frequency -->
+          <div class="chart-card">
+            <h3><i class="fas fa-chart-bar"></i> Entry Frequency</h3>
+            <canvas id="entryFrequencyChart"></canvas>
+          </div>
+
+          <!-- Word Count Trend -->
+          <div class="chart-card">
+            <h3><i class="fas fa-pen"></i> Word Count Trend</h3>
+            <canvas id="wordCountChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Emotions -->
+        <div class="recent-emotions-section">
+          <h3><i class="fas fa-history"></i> Recent Emotional Patterns</h3>
+          <div id="recentEmotionsList" class="emotions-timeline">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- No Data State -->
+        <div class="no-data-state" id="noDataState" style="display: none">
+          <i class="fas fa-chart-line"></i>
+          <h2>No Data Yet</h2>
+          <p>
+            Start journaling and analyzing your entries to see your emotional
+            analytics!
+          </p>
+          <a href="journal.html" class="btn primary">
+            <i class="fas fa-book"></i> Go to Journal
+          </a>
+        </div>
+      </main>
+
+      <footer>
+        <p>AI Message Analyzer &copy; 2025 | Powered by OpenAI</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="settings.js"></script>
+    <script src="analytics.js"></script>
+  </body>
+</html>
